@@ -1,4 +1,3 @@
-
 public class Servidor extends Thread
 {
 	private static Servidor[] respondiente;
@@ -8,7 +7,7 @@ public class Servidor extends Thread
 	
 	public void run()
 	{
-		while(buffer.numClientes > 0)
+		while(buffer.getNumClientes() > 0)
 		{
 			mensajeActual = buffer.entregar();
 			mensajeActual.setRespuesta(mensajeActual.getRespuesta() +1 );
