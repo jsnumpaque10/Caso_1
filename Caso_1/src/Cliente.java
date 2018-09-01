@@ -21,7 +21,7 @@ public class Cliente extends Thread
 	}
 	public void run()
 	{
-
+		buffer.ingresarCliente();
 		while(mensajesEnviados < CantidadMensajes)
 		{
 			
@@ -30,7 +30,7 @@ public class Cliente extends Thread
 		mensajesEnviados ++;
 		
 		}
-		
+		buffer.retirarCliente();
 	}
 	
 	

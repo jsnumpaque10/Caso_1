@@ -77,4 +77,16 @@ public class Buffer
 		this.cantidadMensajes = cantidadMensajes;
 	}
 
+	public void recibir(Mensaje mensaje) 
+	{
+		if(cantidadMensajes<capacidadMensajes)
+		{
+			cantidadMensajes ++;
+			Mensaje[cantidadMensajes] = mensaje;
+			
+		}
+	}
+	
+	
+
 }
