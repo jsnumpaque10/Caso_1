@@ -51,14 +51,22 @@ public class Buffer
 		}
 	}
 	
-	public Mensaje enviarMensaje()
-	{
+	public  Mensaje enviarMensaje()
+	{ 
+		
+	Mensaje enviar = null;
 		synchronized(this)
 		{
-			Mensaje mensajeAEnviar = (Mensaje) Mensajes.get(cantidadMensajes-1);
-			Mensajes.remove(cantidadMensajes-1);
-			return mensajeAEnviar;
+			if (Mensajes.size() > 0)
+			{
+				
+				enviar = Mensajes.get(0);
+				Mensajes.remove(0);
+			}
+				
+		
 		}
+		return enviar;
 	}
 	
 	
