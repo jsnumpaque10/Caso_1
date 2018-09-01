@@ -22,12 +22,14 @@ public class Buffer
 	 */
 	private ArrayList<Mensaje> Mensajes;
 	
-	public Buffer(int pCapacidadMensajes)
+	public Buffer(String[] args)
 	{
-		setCapacidadMensajes(pCapacidadMensajes);
+		
+		setCapacidadMensajes(20);
 		setNumClientes(0);
 		setCantidadMensajes(0);
 		Mensajes = new ArrayList<Mensaje>();
+
 	}
 	
 	/**

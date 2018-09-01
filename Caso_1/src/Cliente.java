@@ -9,7 +9,11 @@ public class Cliente extends Thread
 	private static int CantidadMensajes = 5;
 	private int mensajesEnviados =0;
 	
-	public static void main (String args)
+	
+	/**
+	 * Método que inicializa los threds.
+	 */	
+	public static void main (String[] args)
 	{
 		
 		Cliente[] clientes = new Cliente[CantidadClientes];
@@ -19,6 +23,10 @@ public class Cliente extends Thread
 			clientes[i].start();
 		}
 	}
+	
+	/**
+	 * instrucciones que sigue el thred para enviar mensajes
+	 */	
 	public void run()
 	{
 		buffer.ingresarCliente();

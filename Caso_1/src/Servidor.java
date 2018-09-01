@@ -27,6 +27,7 @@ public class Servidor extends Thread
 	
 	public static void main(String[] args)
 	{
+		
 		respondiente = new Servidor[10];
 		for (int i = 0; i < respondiente.length; i++) 
 		{
