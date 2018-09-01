@@ -2,7 +2,8 @@
 public class Cliente extends Thread
 {
 	private Mensaje mensaje;
-	
-	private 
+	private int idCliente;
+	private static Buffer buffer;
+	 
 
 }
