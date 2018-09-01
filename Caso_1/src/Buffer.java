@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Buffer
 {
@@ -19,14 +20,14 @@ public class Buffer
 	/**
 	 * Contenedor de todos los mensajes que recibe el buffer.
 	 */
-	private Mensaje[] Mensajes;
+	private ArrayList Mensajes;
 	
 	public Buffer(int pCapacidadMensajes)
 	{
 		setCapacidadMensajes(pCapacidadMensajes);
 		setNumClientes(0);
 		setCantidadMensajes(0);
-		Mensajes = new Mensaje[pCapacidadMensajes];
+		Mensajes = new ArrayList();
 	}
 	
 	/**
@@ -42,12 +43,21 @@ public class Buffer
 	
 	/**
 	 * Método que retira un cliente del buffer cuando y ha enviado todos sus mensajes.
-	 */
-	
+	 */	
 	public void retirarCliente()
 	{
 		synchronized(this){
 			numClientes--;
+		}
+	}
+	
+	public Mensaje enviarMensaje()
+	{
+		synchronized(this)
+		{
+			Mensaje mensajeAEnviar = (Mensaje) Mensajes.get(cantidadMensajes-1);
+			Mensajes.remove(cantidadMensajes-1);
+			return mensajeAEnviar;
 		}
 	}
 	
@@ -76,7 +86,6 @@ public class Buffer
 	public void setCantidadMensajes(int cantidadMensajes) {
 		this.cantidadMensajes = cantidadMensajes;
 	}
-
 	public boolean recibir(Mensaje mensaje) 
 	{
 		synchronized (this) {
