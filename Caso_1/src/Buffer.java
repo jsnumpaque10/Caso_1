@@ -20,14 +20,14 @@ public class Buffer
 	/**
 	 * Contenedor de todos los mensajes que recibe el buffer.
 	 */
-	private ArrayList Mensajes;
+	private ArrayList<Mensaje> Mensajes;
 	
 	public Buffer(int pCapacidadMensajes)
 	{
 		setCapacidadMensajes(pCapacidadMensajes);
 		setNumClientes(0);
 		setCantidadMensajes(0);
-		Mensajes = new ArrayList();
+		Mensajes = new ArrayList<Mensaje>();
 	}
 	
 	/**
