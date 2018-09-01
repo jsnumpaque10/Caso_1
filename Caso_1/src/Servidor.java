@@ -9,9 +9,17 @@ public class Servidor extends Thread
 	{
 		while(buffer.getNumClientes() > 0)
 		{
-			mensajeActual = buffer.entregar();
-			mensajeActual.setRespuesta(mensajeActual.getRespuesta() +1 );
-			mensajeActual.notify();
+			mensajeActual = buffer.enviarMensaje();
+			if(mensajeActual == null)
+			{
+				this.yield();
+			}
+			else
+			{
+				mensajeActual.setRespuesta(mensajeActual.getRespuesta() +1 );
+				mensajeActual.notify();
+			}
+			
 		}
 		
 	}
