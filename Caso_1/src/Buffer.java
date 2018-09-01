@@ -77,14 +77,34 @@ public class Buffer
 		this.cantidadMensajes = cantidadMensajes;
 	}
 
-	public void recibir(Mensaje mensaje) 
+	public boolean recibir(Mensaje mensaje) 
 	{
+		synchronized (this) {
 		if(cantidadMensajes<capacidadMensajes)
 		{
-			cantidadMensajes ++;
-			Mensaje[cantidadMensajes] = mensaje;
+			
+				cantidadMensajes ++;
+				Mensajes.add(mensaje);
+				try {
+					mensaje.wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return true;
 			
 		}
+		else
+		{
+			return false;
+		}
+		
+		}
+		
+		
+		
+		
+		
 	}
 	
 	

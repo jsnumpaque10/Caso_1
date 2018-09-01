@@ -22,12 +22,22 @@ public class Cliente extends Thread
 	public void run()
 	{
 		buffer.ingresarCliente();
+		
+		boolean exito;
+		
 		while(mensajesEnviados < CantidadMensajes)
 		{
 			
 		mensaje = new Mensaje(randInt(0,999999));
-		buffer.recibir(mensaje);
+		 exito = buffer.recibir(mensaje);
+		 if(exito){
 		mensajesEnviados ++;
+		 }
+		 else
+		 {
+			 this.yield();
+		 }
+
 		
 		}
 		buffer.retirarCliente();
@@ -46,7 +56,10 @@ public class Cliente extends Thread
 		int randomNum = rand.nextInt((max - min) + 1) + min;
 
 		return randomNum;
+		
 	}
+	
+
 	 
 
 }
